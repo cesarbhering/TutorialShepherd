@@ -15,14 +15,18 @@ export default {
         const tour = this.$shepherd({
           useModalOverlay: true,
           defaultStepOptions: {
+            cancelIcon: {enabled: true},
             popperOptions: {
-              modifiers: [{ name: 'offset', options: { offset: [0, 50] } }]
+              modifiers: [{ name: 'offset', options: { offset: [0, 50] } }, 
+              { name: 'arrow', options: { padding: 20 } }]
             }
           }
         });
 
         tour.addStep({
-          attachTo: { element: '#shepherd-teste', on: 'top' },
+          classes: 'width-limit',
+          attachTo: { element: '#shepherd-teste', on: 'right-end' },
+          title: 'Test Title',
           text: 'Test'
         });
 
@@ -31,7 +35,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
 #shepherd-teste {
   background-color: aqua;
   margin: 25%;
@@ -42,5 +46,9 @@ export default {
   height: 50%;
   top: 5000px;
   bottom: 123;
+}
+
+.width-limit {
+  max-width: 200px;
 }
 </style>
